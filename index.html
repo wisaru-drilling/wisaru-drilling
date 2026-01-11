@@ -542,10 +542,42 @@ button{
   </div>
 
 </div>
-<button id="proceed" class="btn" style="margin-top:20px;" onclick="sendQuoteLink()">
+<button class="btn" style="margin-top:20px;" onclick="emailQuote()">
   Email This Quote
 </button>
 
+
+<script>
+function emailQuote(){
+
+  const params = new URLSearchParams(window.location.search);
+
+  const name = "${name}";
+  const phone = "${phone}";
+  const email = "${email}";
+  const depth = "${depth}";
+  const distance = "${d.toFixed(1)}";
+  const deposit = "${travelTotal.toFixed(2)}";
+  const work = "${(drilling + water).toFixed(2)}";
+
+  const link =
+    "https://wisarudrilling.netlify.app/quote.html?" +
+    "name=" + encodeURIComponent(name) +
+    "&phone=" + encodeURIComponent(phone) +
+    "&email=" + encodeURIComponent(email) +
+    "&depth=" + depth +
+    "&distance=" + distance +
+    "&deposit=" + deposit +
+    "&work=" + work;
+
+  const mail =
+    "mailto:ruankoen89@gmail.com" +
+    "?subject=WISARU DRILLING – New Quote" +
+    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+
+  window.location.href = mail;
+}
+</script>
 
 </body>
 </html>
