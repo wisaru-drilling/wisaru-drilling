@@ -420,9 +420,8 @@ const travel = (d / kmPerL) * diesel;
 const travelVat = travel * 0.15;
 const travelTotal = travel + travelVat;
 
-const depth = parseFloat(document.getElementById("depth").value) || 0;
 const rate = parseInt(document.getElementById("jobType").value);
-const drilling = depth * rate;
+const drilling = rate;   // placeholder — actual depth billed on site
 const casingRate = parseInt(document.getElementById("casing").value);
 const water = parseInt(document.getElementById("water").value);
 
@@ -436,14 +435,18 @@ LAST_QUOTE = {
   work: (drilling + water).toFixed(2)
   }; 
   
-  const link =
+const link =
   "https://wisarudrilling.netlify.app/quote.html?" +
   "name=" + encodeURIComponent(name) +
   "&phone=" + encodeURIComponent(phone) +
   "&email=" + encodeURIComponent(email) +
-  "&depth=" + depth +
   "&distance=" + d.toFixed(1) +
+  "&fuel=" + travel.toFixed(2) +
+  "&vat=" + travelVat.toFixed(2) +
   "&deposit=" + travelTotal.toFixed(2) +
+  "&rate=" + rate +
+  "&casing=" + casingRate +
+  "&water=" + water +
   "&work=" + (drilling + water).toFixed(2);
 
 window.location.href = link;

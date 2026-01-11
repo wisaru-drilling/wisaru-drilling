@@ -1,65 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>WISARU DRILLING – Quote</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="supported-color-schemes" content="light">
-
+<title>WISARU Quote</title>
 <style>
-body{
-  font-family:Arial;
-  padding:40px;
-  background:#eceff2;
-  color:#111;
-}
-
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  margin-top:20px;
-}
-
-.box{
-  border:1px solid #ccc;
-  padding:15px;
-  background:white;
-}
-
-.total{
-  font-size:22px;
-  font-weight:bold;
-}
-
-button{
-  width:100%;
-  margin-top:25px;
-  padding:15px;
-  font-size:18px;
-  background:#3a516b;
-  color:white;
-  border:none;
-  border-radius:8px;
-}
-
-@media(max-width:700px){
-  .grid{grid-template-columns:1fr;}
-  .header{flex-direction:column;align-items:flex-start;}
-}
+body{font-family:Arial;padding:40px;color:#111}
+.header{display:flex;justify-content:space-between;align-items:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
+.box{border:1px solid #ccc;padding:15px}
+.total{font-size:22px;font-weight:bold}
 </style>
 </head>
-
 <body>
+
 <div class="header">
   <div>
     <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" style="height:70px">
@@ -73,63 +25,64 @@ button{
 </div>
 
 <p>
-<b>Client:</b> <span id="name"></span><br>
-<b>Phone:</b> <span id="phone"></span><br>
-<b>Email:</b> <span id="email"></span><br>
-<b>Distance:</b> <span id="distance"></span> km
+<b>Client:</b> <span id="q_name"></span><br>
+<b>Phone:</b> <span id="q_phone"></span><br>
+<b>Email:</b> <span id="q_email"></span><br>
+<b>Distance:</b> <span id="q_distance"></span> km
 </p>
 
-<div class="grid">
 
-  <div class="box">
-    <h3>Transit Deposit (Payable Before Mobilisation)</h3>
-    <p id="fuel"></p>
-    <p id="vat"></p>
-    <p class="total" id="deposit"></p>
-    <p>This amount must be paid before the drilling rig is dispatched.</p>
-  </div>
+<div class="box">
 
-  <div class="box">
-    <h3>Drilling & Work (EX VAT)</h3>
-    <p id="drilling"></p>
-    <p id="casing"></p>
-    <p id="water"></p>
-    <p class="total" id="work"></p>
-    <p style="font-size:12px">
-      VAT and final pricing will be calculated after drilling is completed,
-      based on actual drilled depth and casing installed.
-    </p>
-  </div>
+<h3>Transit & Deposit</h3>
+
+<p>Transit Cost: R<span id="q_fuel"></span></p>
+<p>VAT (15%): R<span id="q_vat"></span></p>
+<p class="total">Deposit Due: R<span id="q_deposit"></span></p>
+
+<p style="font-size:13px;margin-top:8px;">
+This deposit must be paid before the drilling rig is dispatched.
+</p>
+
+<hr style="margin:15px 0;">
+
+<h3>Drilling & Work</h3>
+
+<p>
+Drilling Rate: R<span id="q_rate"></span> per meter
+</p>
+
+<p>Casing Price per Meter: R<span id="q_casing"></span></p>
+
+<p>Water Location: R<span id="q_water"></span></p>
+
+<p style="font-size:12px">
+Final drilling depth, casing length and VAT will be calculated after drilling is completed.
+</p>
 
 </div>
 
-<a id="mailLink" href="#" style="text-decoration:none;">
-  <button>Email This Quote</button>
-</a>
+<button id="proceed" class="btn" style="margin-top:20px;">
+  Proceed & Email Invoice
+</button>
 
 <script>
 const p = new URLSearchParams(window.location.search);
 
-document.getElementById("name").innerText = p.get("name");
-document.getElementById("phone").innerText = p.get("phone");
-document.getElementById("email").innerText = p.get("email");
-document.getElementById("distance").innerText = p.get("distance");
+document.getElementById("q_name").textContent = p.get("name");
+document.getElementById("q_phone").textContent = p.get("phone");
+document.getElementById("q_email").textContent = p.get("email");
+document.getElementById("q_distance").textContent = p.get("distance");
 
-document.getElementById("fuel").innerText = "Fuel & Travel included";
-document.getElementById("vat").innerText = "VAT included";
-document.getElementById("deposit").innerText = "Deposit Due: R " + p.get("deposit");
+document.getElementById("q_fuel").textContent = p.get("fuel");
+document.getElementById("q_vat").textContent = p.get("vat");
+document.getElementById("q_deposit").textContent = p.get("deposit");
 
-document.getElementById("drilling").innerText = "Depth: " + p.get("depth") + " m";
-document.getElementById("casing").innerText = "Casing: R " + p.get("casing");
-document.getElementById("water").innerText = "Water Location included";
-document.getElementById("work").innerText = "Work Total (EX VAT): R " + p.get("work");
-
-const link = window.location.href;
-
-document.getElementById("mailLink").href =
-  "mailto:ruankoen89@gmail.com" +
-  "?subject=WISARU DRILLING – New Quote" +
-  "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+document.getElementById("q_drilling").textContent = p.get("drilling");
+document.getElementById("q_casing").textContent = p.get("casing");
+document.getElementById("q_water").textContent = p.get("water");
+document.getElementById("q_work").textContent = p.get("work");
+document.getElementById("q_rate").textContent = p.get("rate");
 
 </script>
 </body>
