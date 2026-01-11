@@ -436,164 +436,19 @@ LAST_QUOTE = {
   deposit: travelTotal.toFixed(2),
   work: (drilling + water).toFixed(2)
 };
+const link =
+  "https://wisarudrilling.netlify.app/quote.html?" +
+  "name=" + encodeURIComponent(name) +
+  "&phone=" + encodeURIComponent(phone) +
+  "&email=" + encodeURIComponent(email) +
+  "&depth=" + depth +
+  "&distance=" + d.toFixed(1) +
+  "&deposit=" + travelTotal.toFixed(2) +
+  "&work=" + (drilling + water).toFixed(2);
 
-    const html = `
-<!DOCTYPE html>
-<html>
-<head>
-<title>WISARU Quote</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light only">
-<meta name="supported-color-schemes" content="light">
-
-<style>
-body{
-  font-family:Arial;
-  padding:15px;
-  background:#eceff2;
-  color:#111;
-}
-
-.header{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:15px;
-  margin-top:15px;
-}
-
-.box{
-  background:#ffffff;
-  border-radius:10px;
-  padding:15px;
-  border:1px solid #ccc;
-}
-
-.total{
-  font-size:20px;
-  font-weight:bold;
-  margin-top:10px;
-}
-
-button{
-  width:100%;
-  padding:15px;
-  font-size:18px;
-  background:#3a516b;
-  color:white;
-  border:none;
-  border-radius:8px;
-  margin-top:15px;
-}
-
-:root{
-  color-scheme: light;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <div>
-    <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" style="height:70px">
-    <h2>WISARU DRILLING</h2>
-  </div>
-  <div style="text-align:right">
-    Danielskuil, Northern Cape<br>
-    072 280 0364 | 071 522 1980<br>
-    ruankoen89@gmail.com
-  </div>
-</div>
-
-<p>
-<b>Client:</b> ${name}<br>
-<b>Phone:</b> ${phone}<br>
-<b>Email:</b> ${email}<br>
-<b>Distance:</b> ${d.toFixed(1)} km
-</p>
-
-<div class="grid">
-
-  <div class="box">
-    <h3>Transit Deposit (Payable Before Mobilisation)</h3>
-    <p>Fuel & Travel: R${travel.toFixed(2)}</p>
-    <p>VAT (15%): R${travelVat.toFixed(2)}</p>
-    <p class="total">Deposit Due: R${travelTotal.toFixed(2)}</p>
-    <p>This amount must be paid before the drilling rig is dispatched.</p>
-  </div>
-
-  <div class="box">
-    <h3>Drilling & Work (EX VAT)</h3>
-    <p>Drilling (${depth} m @ R${rate}): R${drilling.toFixed(2)}</p>
- <p>Casing: R${casingRate} per meter</p>
- <p>Water Location: R${water}</p>
-<p class="total">Work Total (EX VAT): R${(drilling + water).toFixed(2)}</p>
-    <p style="font-size:12px">
-      VAT and final pricing will be calculated after drilling is completed,
-      based on actual drilled depth and casing installed.
-    </p>
-  </div>
-
-</div>
-<button class="btn" style="margin-top:20px;" onclick="emailQuote()">
-  Email This Quote
-</button>
-
-
-<script>
-function emailQuote(){
-
-  const params = new URLSearchParams(window.location.search);
-
-  const name = "${name}";
-  const phone = "${phone}";
-  const email = "${email}";
-  const depth = "${depth}";
-  const distance = "${d.toFixed(1)}";
-  const deposit = "${travelTotal.toFixed(2)}";
-  const work = "${(drilling + water).toFixed(2)}";
-
-  const link =
-    "https://wisarudrilling.netlify.app/quote.html?" +
-    "name=" + encodeURIComponent(name) +
-    "&phone=" + encodeURIComponent(phone) +
-    "&email=" + encodeURIComponent(email) +
-    "&depth=" + depth +
-    "&distance=" + distance +
-    "&deposit=" + deposit +
-    "&work=" + work;
-
-  const mail =
-    "mailto:ruankoen89@gmail.com" +
-    "?subject=WISARU DRILLING – New Quote" +
-    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
-
-  window.location.href = mail;
-}
-</script>
-
-</body>
-</html>
-`;
-
-    const w = window.open("");
-    w.document.write(html);
-    w.document.close();
+window.location.href = link;
 
 };
-function sendQuoteLink(){
-
-  if(!LAST_QUOTE.name){
-    alert("Please process a quote first.");
-    return;
-  }
 
   const link =
     "https://wisarudrilling.netlify.app/quote.html?" +

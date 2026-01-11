@@ -58,6 +58,8 @@ h2{margin-top:0}
   <div class="total" id="total"></div>
 
   <button class="btn" onclick="window.print()">Print Quote</button>
+<button class="btn" onclick="emailQuote()">Email This Quote</button>
+
 </div>
 
 <script>
@@ -83,5 +85,18 @@ document.getElementById("info").innerHTML = `
 
 document.getElementById("total").innerText = "Total (ex VAT): R " + work;
 </script>
+<script>
+function emailQuote(){
+  const link = window.location.href;
+
+  const mail =
+    "mailto:ruankoen89@gmail.com" +
+    "?subject=WISARU DRILLING – New Quote" +
+    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+
+  window.location.href = mail;
+}
+</script>
+
 </body>
 </html>
