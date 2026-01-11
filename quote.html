@@ -10,7 +10,7 @@
 <style>
 body{
   font-family:Arial;
-  padding:20px;
+  padding:40px;
   background:#eceff2;
   color:#111;
 }
@@ -19,24 +19,21 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:15px;
+  gap:20px;
   flex-wrap:wrap;
 }
-
-.header img{height:70px}
 
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:30px;
   margin-top:20px;
 }
 
 .box{
-  background:#fff;
-  padding:20px;
-  border-radius:10px;
   border:1px solid #ccc;
+  padding:15px;
+  background:white;
 }
 
 .total{
@@ -53,7 +50,6 @@ button{
   color:white;
   border:none;
   border-radius:8px;
-  cursor:pointer;
 }
 
 @media(max-width:700px){
@@ -64,10 +60,9 @@ button{
 </head>
 
 <body>
-
 <div class="header">
   <div>
-    <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png">
+    <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" style="height:70px">
     <h2>WISARU DRILLING</h2>
   </div>
   <div style="text-align:right">
@@ -77,7 +72,12 @@ button{
   </div>
 </div>
 
-<p id="client"></p>
+<p>
+<b>Client:</b> <span id="name"></span><br>
+<b>Phone:</b> <span id="phone"></span><br>
+<b>Email:</b> <span id="email"></span><br>
+<b>Distance:</b> <span id="distance"></span> km
+</p>
 
 <div class="grid">
 
@@ -103,43 +103,34 @@ button{
 
 </div>
 
-<button onclick="emailQuote()">Email This Quote</button>
+<a id="mailLink" href="#" style="text-decoration:none;">
+  <button>Email This Quote</button>
+</a>
 
 <script>
 const p = new URLSearchParams(window.location.search);
 
-const name = p.get("name");
-const phone = p.get("phone");
-const email = p.get("email");
-const depth = p.get("depth");
-const distance = p.get("distance");
-const deposit = p.get("deposit");
-const work = p.get("work");
-
-document.getElementById("client").innerHTML = `
-<b>Client:</b> ${name}<br>
-<b>Phone:</b> ${phone}<br>
-<b>Email:</b> ${email}<br>
-<b>Distance:</b> ${distance} km<br>
-<b>Depth:</b> ${depth} m
-`;
+document.getElementById("name").innerText = p.get("name");
+document.getElementById("phone").innerText = p.get("phone");
+document.getElementById("email").innerText = p.get("email");
+document.getElementById("distance").innerText = p.get("distance");
 
 document.getElementById("fuel").innerText = "Fuel & Travel included";
 document.getElementById("vat").innerText = "VAT included";
-document.getElementById("deposit").innerText = "Deposit Due: R " + deposit;
-document.getElementById("work").innerText = "Work Total (EX VAT): R " + work;
+document.getElementById("deposit").innerText = "Deposit Due: R " + p.get("deposit");
 
-function emailQuote(){
-  const link = window.location.href;
+document.getElementById("drilling").innerText = "Depth: " + p.get("depth") + " m";
+document.getElementById("casing").innerText = "Casing: R " + p.get("casing");
+document.getElementById("water").innerText = "Water Location included";
+document.getElementById("work").innerText = "Work Total (EX VAT): R " + p.get("work");
 
-  const mail =
-    "mailto:ruankoen89@gmail.com" +
-    "?subject=WISARU DRILLING – New Quote" +
-    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+const link = window.location.href;
 
-  window.location.href = mail;
-}
+document.getElementById("mailLink").href =
+  "mailto:ruankoen89@gmail.com" +
+  "?subject=WISARU DRILLING – New Quote" +
+  "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+
 </script>
-
 </body>
 </html>
