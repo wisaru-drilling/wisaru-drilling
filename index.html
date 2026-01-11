@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="google-site-verification" content="ztKK2n5UZs1T5huqke7iHuZjQvPbohgMQ9QhGoEyIoU" />
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
 <title>WISARU DRILLING</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
@@ -95,6 +97,64 @@ select option:focus{
   height:36px;
 }
 
+/* Mobile layout fixes */
+@media (max-width: 768px) {
+
+  header{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  header h1{
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  nav a{
+    font-size: 16px;
+    margin: 5px;
+  }
+
+  .section{
+    padding: 20px;
+  }
+
+  .card{
+    padding: 16px;
+  }
+
+  .grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  input, select, button{
+    font-size: 16px;
+  }
+
+  .btn{
+    width: 100%;
+  }
+
+  #manualMenu{
+    right: 0;
+    bottom: 70px;
+    width: 90vw;
+  }
+
+  .contact-link{
+    font-size: 18px;
+  }
+
+}
 
 </style>
 </head>
@@ -102,9 +162,6 @@ select option:focus{
 <header>
 <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" alt="WISARU DRILLING Logo" style="height:80px;vertical-align:middle;margin-right:10px;"><h1 style="display:inline">WISARU DRILLING</h1>
 <nav>
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#about">About</a>
 <a href="#quote">Get a Quote</a>
 <a href="#contact">Contact</a>
 <a href="#disclaimer">Disclaimer</a>
