@@ -387,8 +387,6 @@ document.addEventListener("click", (e) => {
 
 document.getElementById("calc").onclick = async () => {
 
-  
-
  const name  = document.getElementById("name").value;
 const phone = document.getElementById("phone").value;
 const email = document.getElementById("email").value;
@@ -427,6 +425,7 @@ const rate = parseInt(document.getElementById("jobType").value);
 const drilling = depth * rate;
 const casingRate = parseInt(document.getElementById("casing").value);
 const water = parseInt(document.getElementById("water").value);
+
 LAST_QUOTE = {
   name,
   phone,
@@ -435,8 +434,9 @@ LAST_QUOTE = {
   distance: d.toFixed(1),
   deposit: travelTotal.toFixed(2),
   work: (drilling + water).toFixed(2)
-};
-const link =
+  }; 
+  
+  const link =
   "https://wisarudrilling.netlify.app/quote.html?" +
   "name=" + encodeURIComponent(name) +
   "&phone=" + encodeURIComponent(phone) +
@@ -449,26 +449,6 @@ const link =
 window.location.href = link;
 
 };
-
-  const link =
-    "https://wisarudrilling.netlify.app/quote.html?" +
-    "name=" + encodeURIComponent(LAST_QUOTE.name) +
-    "&phone=" + encodeURIComponent(LAST_QUOTE.phone) +
-    "&email=" + encodeURIComponent(LAST_QUOTE.email) +
-    "&depth=" + LAST_QUOTE.depth +
-    "&distance=" + LAST_QUOTE.distance +
-    "&deposit=" + LAST_QUOTE.deposit +
-    "&work=" + LAST_QUOTE.work;
-
-  const mail =
-    "mailto:ruankoen89@gmail.com" +
-    "?subject=WISARU DRILLING – New Quote" +
-    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
-
-  window.location.href = mail;
-}
-
-
 </script>
 </body>
 </html>

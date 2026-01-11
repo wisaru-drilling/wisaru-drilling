@@ -1,91 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>WISARU DRILLING – Quote</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+
 <style>
 body{
   font-family:Arial;
-  background:#eceff2;
   padding:20px;
+  background:#eceff2;
   color:#111;
 }
 
-.card{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  max-width:600px;
-  margin:auto;
-}
-
-h2{margin-top:0}
-
-.row{
+.header{
   display:flex;
   justify-content:space-between;
-  margin:8px 0;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.header img{height:70px}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:20px;
+}
+
+.box{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  border:1px solid #ccc;
 }
 
 .total{
   font-size:22px;
   font-weight:bold;
-  margin-top:15px;
-  border-top:2px solid #ddd;
-  padding-top:10px;
 }
 
-.btn{
+button{
   width:100%;
-  margin-top:20px;
+  margin-top:25px;
   padding:15px;
+  font-size:18px;
   background:#3a516b;
   color:white;
   border:none;
   border-radius:8px;
-  font-size:18px;
+  cursor:pointer;
+}
+
+@media(max-width:700px){
+  .grid{grid-template-columns:1fr;}
+  .header{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
 
 <body>
-<div class="card">
-  <h2>WISARU DRILLING – Quote</h2>
 
-  <div id="info"></div>
+<div class="header">
+  <div>
+    <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png">
+    <h2>WISARU DRILLING</h2>
+  </div>
+  <div style="text-align:right">
+    Danielskuil, Northern Cape<br>
+    072 280 0364 | 071 522 1980<br>
+    ruankoen89@gmail.com
+  </div>
+</div>
 
-  <div class="total" id="total"></div>
+<p id="client"></p>
 
-  <button class="btn" onclick="window.print()">Print Quote</button>
-<button class="btn" onclick="emailQuote()">Email This Quote</button>
+<div class="grid">
+
+  <div class="box">
+    <h3>Transit Deposit (Payable Before Mobilisation)</h3>
+    <p id="fuel"></p>
+    <p id="vat"></p>
+    <p class="total" id="deposit"></p>
+    <p>This amount must be paid before the drilling rig is dispatched.</p>
+  </div>
+
+  <div class="box">
+    <h3>Drilling & Work (EX VAT)</h3>
+    <p id="drilling"></p>
+    <p id="casing"></p>
+    <p id="water"></p>
+    <p class="total" id="work"></p>
+    <p style="font-size:12px">
+      VAT and final pricing will be calculated after drilling is completed,
+      based on actual drilled depth and casing installed.
+    </p>
+  </div>
 
 </div>
 
+<button onclick="emailQuote()">Email This Quote</button>
+
 <script>
-const params = new URLSearchParams(window.location.search);
+const p = new URLSearchParams(window.location.search);
 
-const name = params.get("name");
-const phone = params.get("phone");
-const email = params.get("email");
-const depth = params.get("depth");
-const distance = params.get("distance");
-const deposit = params.get("deposit");
-const work = params.get("work");
+const name = p.get("name");
+const phone = p.get("phone");
+const email = p.get("email");
+const depth = p.get("depth");
+const distance = p.get("distance");
+const deposit = p.get("deposit");
+const work = p.get("work");
 
-document.getElementById("info").innerHTML = `
-  <div class="row"><b>Client</b><span>${name}</span></div>
-  <div class="row"><b>Phone</b><span>${phone}</span></div>
-  <div class="row"><b>Email</b><span>${email}</span></div>
-  <div class="row"><b>Distance</b><span>${distance} km</span></div>
-  <div class="row"><b>Depth</b><span>${depth} m</span></div>
-  <div class="row"><b>Transit Deposit</b><span>R ${deposit}</span></div>
-  <div class="row"><b>Drilling Work</b><span>R ${work}</span></div>
+document.getElementById("client").innerHTML = `
+<b>Client:</b> ${name}<br>
+<b>Phone:</b> ${phone}<br>
+<b>Email:</b> ${email}<br>
+<b>Distance:</b> ${distance} km<br>
+<b>Depth:</b> ${depth} m
 `;
 
-document.getElementById("total").innerText = "Total (ex VAT): R " + work;
-</script>
-<script>
+document.getElementById("fuel").innerText = "Fuel & Travel included";
+document.getElementById("vat").innerText = "VAT included";
+document.getElementById("deposit").innerText = "Deposit Due: R " + deposit;
+document.getElementById("work").innerText = "Work Total (EX VAT): R " + work;
+
 function emailQuote(){
   const link = window.location.href;
 
