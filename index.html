@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>WISARU DRILLING</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#cdd6e3;color:#111} 
+header{
+  background:#ffffff;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:2px solid #ddd;
+
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+nav a{color:black;margin:0 15px;text-decoration:none;font-weight:bold;font-size:18px}
+nav a:hover{text-decoration:underline}
+.section{padding:40px}
+.card{background:#eceff2;padding:24px;border-radius:12px;margin-bottom:20px;color:#111;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
+.btn{
+  background:#3a516b;
+  color:#fff;
+  padding:15px 25px;
+  border:none;
+  font-size:18px;
+  font-weight:bold;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:#2f445b;
+}
+
+input,select{padding:10px;font-size:16px;width:100%;margin:10px 0}
+.footer{background:#f4a261;padding:20px;color:#111}
+.footer p{font-weight:bold;}
+.red{color:black}
+select{
+  background:#ffffff;      /* same as your cards */
+  color:#111;
+  border:1px solid #bbb;
+  border-radius:5px;
+}
+
+select option{
+  background:#3a516b;      /* your blue */
+  color:white;
+}
+
+select option:hover{
+  background:#2f445b;
+}
+select option:hover,
+select option:checked,
+select option:focus{
+  background:#2f445b !important;
+  color:white;
+}
+.contact-link{
+  display:inline-block;
+  color:#3a516b;
+  font-weight:bold;
+  text-decoration:none;
+  padding:6px 0;
+}
+
+.contact-link:hover{
+  text-decoration:underline;
+  color:#2f445b;
+}
+
+.icon-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+  cursor:pointer;
+  border-radius:6px;
+  background:transparent;
+}
+
+.icon-btn:hover{
+  background:rgba(58,81,107,0.15);
+}
+
+.icon-btn img{
+  width:36px;
+  height:36px;
+}
+
+
+</style>
+</head>
+<body>
+<header>
+<img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" alt="WISARU DRILLING Logo" style="height:80px;vertical-align:middle;margin-right:10px;"><h1 style="display:inline">WISARU DRILLING</h1>
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#quote">Get a Quote</a>
+<a href="#contact">Contact</a>
+<a href="#disclaimer">Disclaimer</a>
+
+</nav>
+</header>
+
+<div id="home" class="section">
+<div class="card">
+<h2>Reliable & Affordable Borehole Drilling</h2>
+<p>Based in Danielskuil, Northern Cape. Serving farms, homeowners and municipalities within a 500km radius.</p>
+</div>
+</div>
+
+<div id="services" class="section">
+<div class="card">
+<h2>Our Services</h2>
+<ul>
+<li>Farm Water Borehole Drilling</li>
+<li>Redrilling of Existing Boreholes</li>
+<li>Steel and PVC Casing Installation</li>
+<li>Water Point Location</li>
+</ul>
+<p>New Boreholes: R1000 per meter<br>Redrilling: R500 per meter</p>
+</div>
+</div>
+
+<div id="about" class="section">
+<div class="card">
+<h2>About WISARU DRILLING</h2>
+<p>WISARU DRILLING is a small private company founded in 2026 by Wimpie Salome and Ruan Koen. We strive to provide affordable, reliable water drilling solutions for farms, homes and municipalities.</p>
+</div>
+</div>
+
+<div id="quote" class="section">
+<div class="card">
+<h2>Online Quote</h2>
+<form id="quoteForm">
+<label>Full Name</label><input id="name" required>
+<label>Phone Number</label><input id="phone" required>
+<label>Email</label><input id="email" required>
+<label>Province</label>
+<select id="province">
+  <option value="Northern Cape">Northern Cape</option>
+  <option value="Western Cape">Western Cape</option>
+  <option value="Free State">Free State</option>
+  <option value="North West">North West</option>
+  <option value="Gauteng">Gauteng</option>
+  <option value="Limpopo">Limpopo</option>
+  <option value="Mpumalanga">Mpumalanga</option>
+  <option value="Eastern Cape">Eastern Cape</option>
+  <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+</select>
+<label>Town / Farm / Area</label>
+<input id="location" placeholder="e.g. Danielskuil, Kuruman, Postmasburg" required>
+
+<label>Job Type</label>
+<select id="jobType"><option value="1000">New Borehole</option><option value="500">Redrill</option></select>
+<label>Casing Type</label>
+<select id="casing"><option value="0">No Casing</option><option value="4">Steel Casing</option><option value="5">PVC Casing</option></select>
+<label>Estimated Depth (optional)</label><input id="depth" placeholder="e.g. 40"><label>Water Point</label>
+<select id="water"><option value="0">Already Marked</option><option value="5000">Please Locate Water</option></select>
+<p class="red" style="color:black">All prices shown are estimates only. Final drilling depth, casing length and total cost will be determined on site.</p>
+<button type="button" id="calc" class="btn">Process Quote</button>
+<p style="font-size:14px;margin-top:20px;">
+  <b>If the online quote fails to load or you would prefer a personalised estimate, please contact us for a manual quote.</b>
+</p>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
+
+
+  <div style="position:relative;">
+    <button type="button" id="manualBtn" class="btn">Get Manual Quote</button>
+
+    <div id="manualMenu" style="
+      display:none;
+      position:absolute;
+      right:0;
+      bottom:60px;
+      background:#fff;
+      border:1px solid #ccc;
+      border-radius:8px;
+      padding:10px;
+      width:220px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+      z-index:100;
+    ">
+      <p style="font-size:14px;margin-bottom:10px;">
+        Please choose your preferred contact method (note, for fastest feedback use whatsapp);
+      </p>
+
+<a href="https://wa.me/27715221980" target="_blank" class="icon-btn">
+  <img src="whatsapp.png" alt="WhatsApp">
+</a>
+
+<a href="#" class="icon-btn" onclick="openEmailPopup();return false;">
+  <img src="email.png" alt="Email">
+</a>
+
+      <p style="font-size:12px;color:#444;margin-top:10px;">
+        If you attempt to contact us and do not receive an immediate response,
+        please send us an email. We are often busy on active drilling sites and
+        will respond as soon as possible.
+      </p>
+    </div>
+  </div>
+
+  <!-- THIS is your original Process Quote button -->
+
+</div>
+
+  </div>
+
+
+</div>
+
+</form>
+</div>
+</div>
+
+<div id="contact" class="section">
+<div class="card">
+<h2>Contact Us</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr; gap:20px;">
+
+<div>
+  <h3>Ruan</h3>
+  <p><a class="contact-link" href="tel:0823628588">Call 082 362 8588</a></p>
+  <p><a class="contact-link" href="https://wa.me/27823628588" target="_blank">WhatsApp</a></p>
+</div>
+
+</div>
+<hr style="margin:20px 0;">
+<p>
+  <a class="contact-link"
+     href="https://mail.google.com/mail/?view=cm&fs=1&to=ruankoen89@gmail.com"
+     target="_blank">
+     Email WISARU DRILLING
+  </a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="disclaimer" class="footer">
+<p class="red">DISCLAIMER & CAUTION</p>
+<p>NO  CHILDREN  ARE  ALLOWED  ANYWHERE  NEAR  THE  DRILLING  SITE  AT  ANY  TIME.  NO  ADULTS  MAY  APPROACH  CLOSER  THAN  10  METERS  FROM  THE  BOREHOLE  WHILE  DRILLING  IS  IN  PROGRESS.  Anyone entering the drilling area does so ENTIRELY  AT  THEIR  OWN  RISK.  WISARU  DRILLING  ACCEPTS NO  RESPONSIBILITY  for INJURY,  DAMAGE,  OR  LOSS caused by FAILURE  TO  FOLLOW  THESE  SAFETY  RULES.</p>
+<p>WISARU DRILLING IS  NOT  RESPONSIBLE  for any legal, municipal, or licensing requirements relating to boreholes.  ALL  PERMITS,  REGISTRATIONS,  AND  COMPLIANCE  WITH  LOCAL  OR  NATIONAL  REGULATIONS  ARE  THE  RESPONSIBILITY  OF  THE  CLIENT.</p>
+<p>If a borehole is successfully drilled and produces water but later dries up, WISARU DRILLING  WILL  NOT  BE  HELD  LIABLE.</p>
+<p>If a borehole is drilled at a LOCATION  CHOSEN  BY  THE  CLIENT and NO  WATER  IS  FOUND, WISARU DRILLING  WILL  NOT  BE  HELD  RESPONSIBLE.</p>
+<p>If WISARU DRILLING is requested to LOCATE  AND  MARK  A  DRILLING  POINT and no water is found, A  SECOND  BOREHOLE  WILL  BE  DRILLED  AT  50%  OF  THE  ORIGINAL  DRILLING  COST.</p>
+<p>ALL DRILLING IS CHARGED PER METER DRILLED, WHETHER WATER IS FOUND OR NOT.</p>
+<p>SUBSURFACE CONDITIONS CANNOT BE GUARANTEED. WISARU DRILLING IS NOT RESPONSIBLE FOR HARD ROCK, CAVES, COLLAPSES, OR GROUND CONDITIONS THAT MAY INCREASE TIME, COST, OR PREVENT COMPLETION OF A BOREHOLE.</p>
+<p>IF WATER IS FOUND AND THE CLIENT REQUESTS DRILLING TO CONTINUE TO A GREATER DEPTH, ANY LOSS OR REDUCTION OF WATER FLOW AS A RESULT OF FURTHER DRILLING SHALL NOT BE THE RESPONSIBILITY OF WISARU DRILLING.</p>
+</div>
+
+<div id="emailPopup" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+">
+  <div style="
+    background:#eceff2;
+    padding:25px;
+    max-width:420px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  ">
+    <h3 style="margin-top:0;">Email Quote Information</h3>
+    <p style="font-size:14px;">
+      To assist you with a manual quote, please include the following in your email:
+    </p>
+    <ul style="font-size:14px;">
+      <li>Full Name</li>
+      <li>Phone Number</li>
+      <li>Town / Farm Location</li>
+      <li>Province</li>
+    </ul>
+
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:15px;">
+      <button onclick="closeEmailPopup()" class="btn" style="background:#888;">Cancel</button>
+      <button onclick="goToEmail()" class="btn">Continue to Email</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openEmailPopup(){
+  document.getElementById("emailPopup").style.display = "flex";
+}
+
+function closeEmailPopup(){
+  document.getElementById("emailPopup").style.display = "none";
+}
+
+function goToEmail(){
+  window.open("https://mail.google.com/mail/?view=cm&fs=1&to=ruankoen89@gmail.com","_blank");
+  closeEmailPopup();
+}
+
+
+const baseLat = -28.1869;
+const baseLon = 23.5420;
+const diesel = 38.00;
+const kmPerL = 4.0;
+
+function getDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) *
+    Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+const manualBtn = document.getElementById("manualBtn");
+const manualMenu = document.getElementById("manualMenu");
+
+manualBtn.onclick = () => {
+  manualMenu.style.display =
+    manualMenu.style.display === "none" || manualMenu.style.display === ""
+      ? "block"
+      : "none";
+};
+
+document.addEventListener("click", (e) => {
+  if (!manualBtn.contains(e.target) && !manualMenu.contains(e.target)) {
+    manualMenu.style.display = "none";
+  }
+});
+
+    
+
+document.getElementById("calc").onclick = async () => {
+
+  
+
+ const name  = document.getElementById("name").value;
+const phone = document.getElementById("phone").value;
+const email = document.getElementById("email").value;
+const place = document.getElementById("location").value;
+const province = document.getElementById("province").value;
+
+
+const res = await fetch(
+  "https://nominatim.openstreetmap.org/search?format=json&countrycodes=za&addressdetails=1&q=" +
+  encodeURIComponent(place + ", " + province)
+);
+
+const data = await res.json();
+
+if (!data || data.length === 0) {
+  alert("Location not found. Please enter a valid town, farm, or area in South Africa.");
+  return;
+}
+
+const lat = parseFloat(data[0].lat);
+const lon = parseFloat(data[0].lon);
+
+if (isNaN(lat) || isNaN(lon)) {
+  alert("Invalid location data. Please try another town or area.");
+  return;
+}
+
+const d = getDistance(baseLat, baseLon, lat, lon);
+
+const travel = (d / kmPerL) * diesel;
+const travelVat = travel * 0.15;
+const travelTotal = travel + travelVat;
+
+const depth = parseFloat(document.getElementById("depth").value) || 0;
+const rate = parseInt(document.getElementById("jobType").value);
+const drilling = depth * rate;
+const casingRate = parseInt(document.getElementById("casing").value);
+const water = parseInt(document.getElementById("water").value);
+
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+<title>WISARU Quote</title>
+<style>
+body{font-family:Arial;padding:40px;color:#111}
+.header{display:flex;justify-content:space-between;align-items:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
+.box{border:1px solid #ccc;padding:15px}
+.total{font-size:22px;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" style="height:70px">
+    <h2>WISARU DRILLING</h2>
+  </div>
+  <div style="text-align:right">
+    Danielskuil, Northern Cape<br>
+    072 280 0364 | 071 522 1980<br>
+    ruankoen89@gmail.com
+  </div>
+</div>
+
+<p>
+<b>Client:</b> ${name}<br>
+<b>Phone:</b> ${phone}<br>
+<b>Email:</b> ${email}<br>
+<b>Distance:</b> ${d.toFixed(1)} km
+</p>
+
+<div class="grid">
+
+  <div class="box">
+    <h3>Transit Deposit (Payable Before Mobilisation)</h3>
+    <p>Fuel & Travel: R${travel.toFixed(2)}</p>
+    <p>VAT (15%): R${travelVat.toFixed(2)}</p>
+    <p class="total">Deposit Due: R${travelTotal.toFixed(2)}</p>
+    <p>This amount must be paid before the drilling rig is dispatched.</p>
+  </div>
+
+  <div class="box">
+    <h3>Drilling & Work (EX VAT)</h3>
+    <p>Drilling (${depth} m @ R${rate}): R${drilling.toFixed(2)}</p>
+ <p>Casing: R${casingRate} per meter</p>
+ <p>Water Location: R${water}</p>
+<p class="total">Work Total (EX VAT): R${(drilling + water).toFixed(2)}</p>
+    <p style="font-size:12px">
+      VAT and final pricing will be calculated after drilling is completed,
+      based on actual drilled depth and casing installed.
+    </p>
+  </div>
+
+</div>
+<button id="proceed" class="btn" style="margin-top:20px;">
+  Proceed & Email Invoice
+</button>
+
+</body>
+</html>
+`;
+
+    const w = window.open("");
+    w.document.write(html);
+    w.document.close();
+
+};
+</script>
+</body>
+</html>
+
