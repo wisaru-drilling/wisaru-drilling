@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WISARU DRILLING – Quote</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  font-family:Arial;
+  background:#eceff2;
+  padding:20px;
+  color:#111;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  max-width:600px;
+  margin:auto;
+}
+
+h2{margin-top:0}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin:8px 0;
+}
+
+.total{
+  font-size:22px;
+  font-weight:bold;
+  margin-top:15px;
+  border-top:2px solid #ddd;
+  padding-top:10px;
+}
+
+.btn{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  background:#3a516b;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:18px;
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h2>WISARU DRILLING – Quote</h2>
+
+  <div id="info"></div>
+
+  <div class="total" id="total"></div>
+
+  <button class="btn" onclick="window.print()">Print Quote</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+const name = params.get("name");
+const phone = params.get("phone");
+const email = params.get("email");
+const depth = params.get("depth");
+const distance = params.get("distance");
+const deposit = params.get("deposit");
+const work = params.get("work");
+
+document.getElementById("info").innerHTML = `
+  <div class="row"><b>Client</b><span>${name}</span></div>
+  <div class="row"><b>Phone</b><span>${phone}</span></div>
+  <div class="row"><b>Email</b><span>${email}</span></div>
+  <div class="row"><b>Distance</b><span>${distance} km</span></div>
+  <div class="row"><b>Depth</b><span>${depth} m</span></div>
+  <div class="row"><b>Transit Deposit</b><span>R ${deposit}</span></div>
+  <div class="row"><b>Drilling Work</b><span>R ${work}</span></div>
+`;
+
+document.getElementById("total").innerText = "Total (ex VAT): R " + work;
+</script>
+</body>
+</html>

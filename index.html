@@ -11,19 +11,51 @@
 <style>
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#cdd6e3;color:#111} 
 header{
-  background:#ffffff;
-  padding:20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  padding:10px 15px;
+  background:#ffffff;
   border-bottom:2px solid #ddd;
-
   position:sticky;
   top:0;
   z-index:1000;
 }
-nav a{color:black;margin:0 15px;text-decoration:none;font-weight:bold;font-size:18px}
-nav a:hover{text-decoration:underline}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  white-space:nowrap;
+}
+
+.brand img{
+  height:45px;
+  flex-shrink:0;
+}
+
+.brand h1{
+  font-size:18px;
+  margin:0;
+}
+
+.nav{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  white-space:nowrap;
+}
+
+.nav a{
+  color:#111;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+  padding:5px 8px;
+  flex-shrink:0;
+}
+
+
 .section{padding:40px}
 .card{background:#eceff2;padding:24px;border-radius:12px;margin-bottom:20px;color:#111;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
 .btn{
@@ -98,130 +130,25 @@ select option:focus{
   height:36px;
 }
 
-/* Mobile layout fixes */
-@media (max-width: 768px) {
 
-  header{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  header h1{
-    font-size: 22px;
-    margin-top: 10px;
-  }
-
-  nav{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  nav a{
-    font-size: 16px;
-    margin: 5px;
-  }
-
-  .section{
-    padding: 20px;
-  }
-
-  .card{
-    padding: 16px;
-  }
-
-  .grid{
-    grid-template-columns: 1fr !important;
-  }
-
-  input, select, button{
-    font-size: 16px;
-  }
-
-  .btn{
-    width: 100%;
-  }
-
-  #manualMenu{
-    right: 0;
-    bottom: 70px;
-    width: 90vw;
-  }
-
-  .contact-link{
-    font-size: 18px;
-  }
-
-}
-@media (max-width: 768px) {
-
-  body{
-    background:#cdd6e3 !important;
-    color:#111 !important;
-  }
-
-  header{
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  header img{
-    height:60px;
-    margin-bottom:10px;
-  }
-
-  nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:8px;
-  }
-
-  nav a{
-    font-size:16px;
-    padding:6px 10px;
-  }
-
-  .section{
-    padding:15px;
-  }
-
-  .card{
-    padding:16px;
-    border-radius:10px;
-  }
-
-  .grid{
-    grid-template-columns:1fr !important;
-  }
-
-  input, select, button{
-    font-size:16px;
-    width:100%;
-  }
-
-  .btn{
-    width:100%;
-  }
-
-}
 
 </style>
 </head>
 <body>
 <header>
-<img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png" alt="WISARU DRILLING Logo" style="height:80px;vertical-align:middle;margin-right:10px;"><h1 style="display:inline">WISARU DRILLING</h1>
-<nav>
-<a href="#quote">Get a Quote</a>
-<a href="#contact">Contact</a>
-<a href="#disclaimer">Disclaimer</a>
+  <div class="brand">
+    <img src="A_digital_vector_vector_graphic_logo_for_Wisaru_Dr.png">
+    <h1>WISARU DRILLING</h1>
+  </div>
 
-</nav>
+  <nav class="nav">
+    <a href="#quote">Get a Quote</a>
+    <a href="#contact">Contact</a>
+    <a href="#disclaimer">Disclaimer</a>
+  </nav>
 </header>
+
+
 
 <div id="home" class="section">
 <div class="card">
@@ -504,14 +431,62 @@ const water = parseInt(document.getElementById("water").value);
 <html>
 <head>
 <title>WISARU Quote</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+
 <style>
-body{font-family:Arial;padding:40px;color:#111}
-.header{display:flex;justify-content:space-between;align-items:center}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
-.box{border:1px solid #ccc;padding:15px}
-.total{font-size:22px;font-weight:bold}
+body{
+  font-family:Arial;
+  padding:15px;
+  background:#eceff2;
+  color:#111;
+}
+
+.header{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+  margin-top:15px;
+}
+
+.box{
+  background:#ffffff;
+  border-radius:10px;
+  padding:15px;
+  border:1px solid #ccc;
+}
+
+.total{
+  font-size:20px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  font-size:18px;
+  background:#3a516b;
+  color:white;
+  border:none;
+  border-radius:8px;
+  margin-top:15px;
+}
+
+:root{
+  color-scheme: light;
+}
 </style>
 </head>
+
 <body>
 
 <div class="header">
