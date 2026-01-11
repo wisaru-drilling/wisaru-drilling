@@ -335,6 +335,8 @@ select option:focus{
 </div>
 
 <script>
+let LAST_QUOTE = {};
+
 function openEmailPopup(){
   document.getElementById("emailPopup").style.display = "flex";
 }
@@ -425,6 +427,15 @@ const rate = parseInt(document.getElementById("jobType").value);
 const drilling = depth * rate;
 const casingRate = parseInt(document.getElementById("casing").value);
 const water = parseInt(document.getElementById("water").value);
+LAST_QUOTE = {
+  name,
+  phone,
+  email,
+  depth,
+  distance: d.toFixed(1),
+  deposit: travelTotal.toFixed(2),
+  work: (drilling + water).toFixed(2)
+};
 
     const html = `
 <!DOCTYPE html>
@@ -547,15 +558,20 @@ button{
 };
 function sendQuoteLink(){
 
+  if(!LAST_QUOTE.name){
+    alert("Please process a quote first.");
+    return;
+  }
+
   const link =
     "https://wisarudrilling.netlify.app/quote.html?" +
-    "name=" + encodeURIComponent(name) +
-    "&phone=" + encodeURIComponent(phone) +
-    "&email=" + encodeURIComponent(email) +
-    "&depth=" + depth +
-    "&distance=" + d.toFixed(1) +
-    "&deposit=" + travelTotal.toFixed(2) +
-    "&work=" + (drilling + water).toFixed(2);
+    "name=" + encodeURIComponent(LAST_QUOTE.name) +
+    "&phone=" + encodeURIComponent(LAST_QUOTE.phone) +
+    "&email=" + encodeURIComponent(LAST_QUOTE.email) +
+    "&depth=" + LAST_QUOTE.depth +
+    "&distance=" + LAST_QUOTE.distance +
+    "&deposit=" + LAST_QUOTE.deposit +
+    "&work=" + LAST_QUOTE.work;
 
   const mail =
     "mailto:ruankoen89@gmail.com" +
@@ -564,6 +580,7 @@ function sendQuoteLink(){
 
   window.location.href = mail;
 }
+
 
 </script>
 </body>
