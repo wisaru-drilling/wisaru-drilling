@@ -436,7 +436,7 @@ LAST_QUOTE = {
   }; 
   
 const link =
-  "https://wisarudrilling.netlify.app/quote.html?" +
+  "quote.html?" +
   "name=" + encodeURIComponent(name) +
   "&phone=" + encodeURIComponent(phone) +
   "&email=" + encodeURIComponent(email) +
@@ -446,10 +446,11 @@ const link =
   "&deposit=" + travelTotal.toFixed(2) +
   "&rate=" + rate +
   "&casing=" + casingRate +
-  "&water=" + water +
-  "&work=" + (drilling + water).toFixed(2);
+  "&water=" + water;
 
 window.location.href = link;
+
+
 
 };
 </script>
