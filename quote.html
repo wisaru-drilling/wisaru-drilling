@@ -73,20 +73,24 @@ Final drilling depth, casing length and VAT are calculated on site after drillin
 
 </div>
 
-<button onclick="emailQuote()" style="
-  width:100%;
-  margin-top:25px;
-  padding:18px;
-  background:#3a516b;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:20px;
-  font-weight:bold;
-  cursor:pointer;
-">
+<a id="emailBtn"
+   style="
+    display:block;
+    width:100%;
+    margin-top:25px;
+    padding:18px;
+    background:#3a516b;
+    color:white;
+    text-align:center;
+    border-radius:8px;
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+   ">
   Email This Quote
-</button>
+</a>
+
 
 
 
@@ -104,17 +108,16 @@ document.getElementById("q_deposit").textContent = p.get("deposit");
 
 </script>
 <script>
-function emailQuote(){
-  const link = window.location.href;
+const link = window.location.href;
 
-  const mail =
-    "mailto:ruankoen89@gmail.com" +
-    "?subject=WISARU DRILLING – New Quote" +
-    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+const mail =
+  "mailto:ruankoen89@gmail.com" +
+  "?subject=WISARU DRILLING – New Quote" +
+  "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
 
-  window.location.href = mail;
-}
+document.getElementById("emailBtn").href = mail;
 </script>
+
 
 </body>
 </html>
