@@ -48,16 +48,27 @@ This deposit must be paid before the drilling rig is dispatched.
 
 <h3>Drilling & Work</h3>
 
-<p>
-Drilling Rate: R<span id="q_rate"></span> per meter
-</p>
+<p><b>Drilling Rates:</b></p>
+<ul>
+  <li>New Borehole: R1000 per meter</li>
+  <li>Redrilling: R500 per meter</li>
+</ul>
 
-<p>Casing Price per Meter: R<span id="q_casing"></span></p>
+<p><b>Casing:</b></p>
+<ul>
+  <li>Steel casing: R5 per meter</li>
+  <li>PVC casing: R4 per meter</li>
+  <li>No casing: R0</li>
+</ul>
 
-<p>Water Location: R<span id="q_water"></span></p>
+<p><b>Water Point Location:</b></p>
+<ul>
+  <li>If required: R5000</li>
+  <li>If not required: R0</li>
+</ul>
 
-<p style="font-size:12px">
-Final drilling depth, casing length and VAT will be calculated after drilling is completed.
+<p style="font-size:12px;margin-top:10px;">
+Final drilling depth, casing length and VAT are calculated on site after drilling is completed.
 </p>
 
 </div>
@@ -77,12 +88,6 @@ document.getElementById("q_distance").textContent = p.get("distance");
 document.getElementById("q_fuel").textContent = p.get("fuel");
 document.getElementById("q_vat").textContent = p.get("vat");
 document.getElementById("q_deposit").textContent = p.get("deposit");
-
-document.getElementById("q_drilling").textContent = p.get("drilling");
-document.getElementById("q_casing").textContent = p.get("casing");
-document.getElementById("q_water").textContent = p.get("water");
-document.getElementById("q_work").textContent = p.get("work");
-document.getElementById("q_rate").textContent = p.get("rate");
 
 </script>
 </body>

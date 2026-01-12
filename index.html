@@ -198,13 +198,6 @@ select option:focus{
 </select>
 <label>Town / Farm / Area</label>
 <input id="location" placeholder="e.g. Danielskuil, Kuruman, Postmasburg" required>
-
-<label>Job Type</label>
-<select id="jobType"><option value="1000">New Borehole</option><option value="500">Redrill</option></select>
-<label>Casing Type</label>
-<select id="casing"><option value="0">No Casing</option><option value="4">Steel Casing</option><option value="5">PVC Casing</option></select>
-<label>Estimated Depth (optional)</label><input id="depth" placeholder="e.g. 40"><label>Water Point</label>
-<select id="water"><option value="0">Already Marked</option><option value="5000">Please Locate Water</option></select>
 <p class="red" style="color:black">All prices shown are estimates only. Final drilling depth, casing length and total cost will be determined on site.</p>
 <button type="button" id="calc" class="btn">Process Quote</button>
 <p style="font-size:14px;margin-top:20px;">
@@ -420,11 +413,6 @@ const travel = (d / kmPerL) * diesel;
 const travelVat = travel * 0.15;
 const travelTotal = travel + travelVat;
 
-const rate = parseInt(document.getElementById("jobType").value);
-const drilling = rate;   // placeholder — actual depth billed on site
-const casingRate = parseInt(document.getElementById("casing").value);
-const water = parseInt(document.getElementById("water").value);
-
 LAST_QUOTE = {
   name,
   phone,
@@ -444,9 +432,6 @@ const link =
   "&fuel=" + travel.toFixed(2) +
   "&vat=" + travelVat.toFixed(2) +
   "&deposit=" + travelTotal.toFixed(2) +
-  "&rate=" + rate +
-  "&casing=" + casingRate +
-  "&water=" + water;
 
 window.location.href = link;
 
