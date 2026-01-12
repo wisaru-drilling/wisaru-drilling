@@ -3,7 +3,36 @@
 <head>
 <title>WISARU Quote</title>
 <style>
-body{font-family:Arial;padding:40px;color:#111}
+@media (max-width: 700px){
+  .email-btn{
+    padding:22px !important;
+    font-size:22px !important;
+  }
+}
+
+body{
+  font-family:Arial;
+  padding:40px;
+  color:#111;
+}
+
+/* Mobile fixes */
+@media (max-width: 700px){
+  body{
+    padding:12px;
+  }
+
+  .header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .box{
+    padding:12px;
+  }
+}
+
 .header{display:flex;justify-content:space-between;align-items:center}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
 .box{border:1px solid #ccc;padding:15px}
@@ -73,23 +102,27 @@ Final drilling depth, casing length and VAT are calculated on site after drillin
 
 </div>
 
-<a id="emailBtn"
-   style="
-    display:block;
+<button
+  class="email-btn"
+  style="
     width:100%;
     margin-top:25px;
     padding:18px;
     background:#3a516b;
     color:white;
-    text-align:center;
+    border:none;
     border-radius:8px;
     font-size:20px;
     font-weight:bold;
-    text-decoration:none;
     cursor:pointer;
-   ">
+  "
+  onclick="emailQuote()"
+>
   Email This Quote
-</a>
+</button>
+
+
+
 
 
 
@@ -108,15 +141,19 @@ document.getElementById("q_deposit").textContent = p.get("deposit");
 
 </script>
 <script>
-const link = window.location.href;
+function emailQuote(){
+  const link = window.location.href;
 
-const mail =
-  "mailto:ruankoen89@gmail.com" +
-  "?subject=WISARU DRILLING – New Quote" +
-  "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+  const gmail =
+    "https://mail.google.com/mail/?view=cm&fs=1" +
+    "&to=ruankoen89@gmail.com" +
+    "&su=WISARU DRILLING – New Quote" +
+    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
 
-document.getElementById("emailBtn").href = mail;
+  window.open(gmail, "_blank");
+}
 </script>
+
 
 
 </body>
