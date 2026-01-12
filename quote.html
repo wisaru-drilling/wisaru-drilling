@@ -3,6 +3,19 @@
 <head>
 <title>WISARU Quote</title>
 <style>
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  background-color: #eceff2 !important;
+  color: #111 !important;
+}
+
+* {
+  color-scheme: light !important;
+}
+
 @media (max-width: 700px){
   .email-btn{
     padding:22px !important;
@@ -37,6 +50,72 @@ body{
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
 .box{border:1px solid #ccc;padding:15px}
 .total{font-size:22px;font-weight:bold}
+/* ---------- MOBILE FIXES ---------- */
+@media (max-width: 600px) {
+
+  body {
+    padding: 12px;
+  }
+
+  /* Header */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header img {
+    height: 50px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+    margin: 4px 0;
+  }
+
+  .header div:last-child {
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* Client info */
+  .client-info,
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Quote box */
+  .quote-box,
+  .box {
+    padding: 14px;
+    margin-top: 15px;
+  }
+
+  .box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .box p,
+  .box li {
+    font-size: 14px;
+  }
+
+  .total {
+    font-size: 18px;
+  }
+
+  /* Button */
+  .btn,
+  button {
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -121,11 +200,19 @@ Final drilling depth, casing length and VAT are calculated on site after drillin
   Email This Quote
 </button>
 
+<script>
+document.getElementById("proceed").onclick = function(){
 
+  const link = window.location.href;
 
+  const mail =
+    "mailto:ruankoen89@gmail.com" +
+    "?subject=WISARU DRILLING – Quote" +
+    "&body=Here is the official quote link:%0A%0A" + encodeURIComponent(link);
 
-
-
+  window.location.href = mail;
+}
+</script>
 
 <script>
 const p = new URLSearchParams(window.location.search);
