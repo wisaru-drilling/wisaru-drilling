@@ -46,9 +46,22 @@ body{
   }
 }
 
-.header{display:flex;justify-content:space-between;align-items:center}
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:20px}
-.box{border:1px solid #ccc;padding:15px}
+.box{
+  background:#ffffff;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
 .total{font-size:22px;font-weight:bold}
 /* ---------- MOBILE FIXES ---------- */
 @media (max-width: 600px) {
@@ -115,10 +128,46 @@ body{
     border-radius: 8px;
   }
 }
+.page{
+  max-width:900px;
+  margin:0 auto;
+}
 
+/* Phone layout */
+@media (max-width: 700px){
+  .page{
+    max-width:100%;
+  }
+
+  .box{
+    border-radius:10px;
+  }
+
+  body{
+    padding:0;
+  }
+}
+@media (max-width: 700px){
+
+  .box{
+    padding:14px;
+  }
+
+  p, li{
+    font-size:14px;
+    line-height:1.4;
+  }
+
+  h3{
+    font-size:16px;
+  }
+
+}
 </style>
 </head>
 <body>
+<div class="page">
+
 
 <div class="header">
   <div>
@@ -241,7 +290,6 @@ function emailQuote(){
 }
 </script>
 
-
-
+</div>
 </body>
 </html>
