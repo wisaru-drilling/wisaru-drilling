@@ -73,9 +73,22 @@ Final drilling depth, casing length and VAT are calculated on site after drillin
 
 </div>
 
-<button id="proceed" class="btn" style="margin-top:20px;">
-  Proceed & Email Invoice
+<button onclick="emailQuote()" style="
+  width:100%;
+  margin-top:25px;
+  padding:18px;
+  background:#3a516b;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+">
+  Email This Quote
 </button>
+
+
 
 <script>
 const p = new URLSearchParams(window.location.search);
@@ -90,5 +103,18 @@ document.getElementById("q_vat").textContent = p.get("vat");
 document.getElementById("q_deposit").textContent = p.get("deposit");
 
 </script>
+<script>
+function emailQuote(){
+  const link = window.location.href;
+
+  const mail =
+    "mailto:ruankoen89@gmail.com" +
+    "?subject=WISARU DRILLING – New Quote" +
+    "&body=Here is the quote link:%0A%0A" + encodeURIComponent(link);
+
+  window.location.href = mail;
+}
+</script>
+
 </body>
 </html>
